@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import BotCard from './BotCard';
+import BotCard from './components/BotCard';
 
 function BotCollection() {
   const [bots, setBots] = useState([]);
