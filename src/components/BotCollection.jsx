@@ -15,7 +15,7 @@ function BotCollection() {
   }, []);
 
   return (
-    <div>
+    <div className="container">
         <br></br>
       <h1 className="bg-primary text-white text-center">Bot Collection</h1>
       <div className="row">
