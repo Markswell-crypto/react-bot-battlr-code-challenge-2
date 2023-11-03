@@ -30,6 +30,8 @@ function BotCollection() {
 
   return (
     <div className="container">
+        
+    <SelectedBots selectedBots={selectedBots} removeBot={removeBot} />
       <br />
       <h1 className="bg-primary text-white text-center">Bot Collection</h1>
       <div className="row">
@@ -42,7 +44,6 @@ function BotCollection() {
           />
         ))}
       </div>
-      <SelectedBots selectedBots={selectedBots} removeBot={removeBot} />
     </div>
   );
 }

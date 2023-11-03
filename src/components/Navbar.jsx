@@ -5,29 +5,20 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <Link className="navbar-brand" to="/">
-        BotApp
+        <img src="/robot.png" alt="APP Icon" height="100px" width="100px" className="mr-2" />
+        {/* Use the correct path to your logo image */}
       </Link>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
       <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav">
+        <ul className="navbar-nav ml-auto">
+          {/* Use the 'ml-auto' class to push links to the right */}
           <li className="nav-item">
             <Link className="nav-link" to="/">
-              Bot Collection
+              Collection
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/your-bot-army">
-              Your Bot Army
+              Bot Army
             </Link>
           </li>
         </ul>

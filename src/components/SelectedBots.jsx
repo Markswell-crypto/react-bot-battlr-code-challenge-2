@@ -1,16 +1,32 @@
 import React from 'react';
 
 function SelectedBots({ selectedBots, removeBot }) {
+  if (!selectedBots || selectedBots.length === 0) {
+    return <div>Create a Bot Army for Battle!</div>;
+  }
+
   return (
-    <div>
-      <h2>Selected Bots</h2>
-      <ul>
+    <div className="bg-light p-3">
+      <h3 className="bg-danger text-white text-center">My Bot Army!</h3>
+      <div className="d-flex flex-wrap">
         {selectedBots.map((bot) => (
-          <li key={bot.id} onClick={() => removeBot(bot)}>
-            {bot.name} - {bot.bot_class}
-          </li>
+          <div
+            key={bot.id}
+            className="m-2 p-2 border rounded text-center"
+            onClick={() => removeBot(bot)}
+          >
+            <img
+              src={bot.avatar_url}
+              alt={bot.name}
+              className="img-thumbnail"
+              width="80"
+              height="80"
+            />
+            <p>{bot.name}</p>
+            <p>{bot.bot_class}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
