@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css'
 import 'bootstrap'
 import BotCollection from './components/BotCollection';
 import BotArmy from './components/BotArmy';
@@ -9,11 +10,11 @@ function App() {
   return (
     <Router>
       <div className="container">
-        <Switch>
-          <Route path="/" exact component={BotCollection} />
-          <Route path="/your-bot-army" component={BotArmy} />
-          <Route path="/bot/:id" component={BotSpecs} />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<BotCollection />} />
+          <Route path="/your-bot-army" element={<BotArmy />} />
+          <Route path="/bot/:id" element={<BotSpecs />} />
+        </Routes>
       </div>
     </Router>
   );
