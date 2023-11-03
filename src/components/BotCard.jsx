@@ -4,9 +4,9 @@ import React from 'react';
 import { FaHeart, FaBolt, FaShieldAlt } from 'react-icons/fa'; // Import icons from the Font Awesome set
 import { Link } from 'react-router-dom';
 
-function BotCard({ bot }) {
+function BotCard({ bot, onSelectBot, selected }) {
   return (
-    <div className="col-md-2 mb-2">
+    <div className={`col-md-2 mb-2 ${selected ? 'selected' : ''}`} onClick={() => onSelectBot(bot)}>
       <div className="card bg-light">
         <img src={bot.avatar_url} alt={bot.name} className="card-img-top img-fluid" />
         <div className="card-body">
