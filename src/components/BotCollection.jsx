@@ -1,3 +1,5 @@
+// This component fetches bot data and renders 
+// a list of bot cards using the BotCard component.
 import React, { useState, useEffect } from 'react';
 import BotCard from './BotCard';
 
@@ -14,12 +16,11 @@ function BotCollection() {
 
   return (
     <div>
-      <h1>Bot Collection</h1>
+        <br></br>
+      <h1 className="bg-primary text-white text-center">Bot Collection</h1>
       <div className="row">
         {bots.map((bot) => (
-          <div key={bot.id} className="col-md-2 mb-3">
-            <BotCard bot={bot} />
-          </div>
+          <BotCard key={bot.id} bot={bot} />
         ))}
       </div>
     </div>

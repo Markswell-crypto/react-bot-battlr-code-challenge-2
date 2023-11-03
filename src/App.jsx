@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css'
-import 'bootstrap'
-import BotsHome from './components/BotsHome';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import BotCollection from './components/BotCollection';
 import BotArmy from './components/BotArmy';
 import BotSpecs from './components/BotSpecs';
 
@@ -11,9 +10,9 @@ function App() {
     <Router>
       <div className="container">
         <Routes>
-          <Route path="/" element={<BotsHome />} />
+          <Route path="/" exact element={<BotCollection />} />
           <Route path="/your-bot-army" element={<BotArmy />} />
-          <Route path="/bot/:id" element={<BotSpecs />} />
+          <Route path="/bot/:id" element={<BotSpecs/>} />
         </Routes>
       </div>
     </Router>
