@@ -1,34 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react'
+import BotCard from "../components/BotCard"
 
-function BotArmy() {
-  const [enlistedBots, setEnlistedBots] = useState([]);
-  // Function to enlist a bot
-  const enlistBot = (bot) => {
-    // Check if the bot is already enlisted
-    if (!enlistedBots.find((b) => b.id === bot.id)) {
-      setEnlistedBots([...enlistedBots, bot]);
-    }
-  };
-  // Function to release a bot
-  const releaseBot = (bot) => {
-    const updatedBots = enlistedBots.filter((b) => b.id !== bot.id);
-    setEnlistedBots(updatedBots);
-  };
+function BotArmy(props) {
+
+  const displayBots = props.bots.map(bot => {
+    return <BotCard bot={bot} action={props.action} removeCard={props.removeCard} />
+  })
+
+
   return (
-    <div>
-      <h1>Your Bot Army</h1>
-      <ul>
-        {enlistedBots.map((bot) => (
-          <li key={bot.id}>
-            {bot.name} - {bot.bot_class}
-            <button onClick={() => releaseBot(bot)} className="btn btn-danger btn-sm ml-2">
-              Release
-            </button>
-          </li>
-        ))}
-      </ul>
+    <div className="ui segment inverted olive bot-army">
+      <div className="ui five column grid">
+        <div className="row bot-army-row">
+          {displayBots}
+        </div>
+      </div>
     </div>
-  );
-}
+  )
 
-export default BotArmy;
+}
+export default BotArmy
