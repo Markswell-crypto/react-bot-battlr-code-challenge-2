@@ -1,35 +1,72 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React from 'react';
 
-function BotSpecs() {
-  const { id } = useParams();
-  const [bot, setBot] = useState(null);
+const botTypeClasses = {
+  Assault: 'icon military',
+  Defender: 'icon shield',
+  Support: 'icon plus circle',
+  Medic: 'icon ambulance',
+  Witch: 'icon magic',
+  Captain: 'icon star',
+};
 
-  useEffect(() => {
-    // Fetch bot details using the ID
-    fetch(`http://localhost:3000/bots/${id}`)
-      .then((response) => response.json())
-      .then((data) => setBot(data))
-      .catch((error) => console.error('Error fetching bot details:', error));
-  }, [id]);
-
-  if (!bot) {
-    return <div>Loading...</div>;
-  }
-
+const BotSpecs = (props) => {
   return (
-    <div>
-      <h1>Bot Details</h1>
-      <h2>{bot.name}</h2>
-      <p>Class: {bot.bot_class}</p>
-      <p>Health: {bot.health}</p>
-      <p>Damage: {bot.damage}</p>
-      <p>Armor: {bot.armor}</p>
-      <Link to={`/your-bot-army`} className="btn btn-primary">
-        Enlist in Your Bot Army
-      </Link>
+    <div className="ui segment">
+      <div className="ui two column centered grid">
+        <div className="row">
+          <div className="four wide column">
+            <img
+              alt="oh no!"
+              className="ui medium circular image bordered"
+              src={props.bot.avatar_url}
+            />
+          </div>
+          <div className="four wide column">
+            <h2>Name: {props.bot.name}</h2>
+            <p>
+              <strong>Catchphrase: </strong>
+              {props.bot.catchphrase}
+            </p>
+            <strong>
+              Class: {props.bot.bot_class}
+              <i className={botTypeClasses[props.bot.bot_class]} />
+            </strong>
+            <br />
+            <div className="ui segment">
+              <div className="ui three column centered grid">
+                <div className="row">
+                  <div className="column">
+                    <i className="icon large circular red heartbeat" />
+                    <strong>Health: {props.bot.health}</strong>
+                  </div>
+                  <div className="column">
+                    <i className="icon large circular yellow lightning" />
+                    <strong>Damage: {props.bot.damage}</strong>
+                  </div>
+                  <div className="column">
+                    <i className="icon large circular blue shield" />
+                    <strong>Armor: {props.bot.armor}</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button
+              className="ui button fluid"
+              onClick={() => props.back()}
+            >
+              Go Back
+            </button>
+            <button
+              className="ui button fluid"
+              onClick={() => props.enlist(props.bot)}
+            >
+              Enlist
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default BotSpecs;
