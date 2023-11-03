@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
 import 'bootstrap'
-import BotCollection from './components/BotCollection';
+import BotsHome from './components/BotsHome';
 import BotArmy from './components/BotArmy';
 import BotSpecs from './components/BotSpecs';
 
@@ -11,7 +11,7 @@ function App() {
     <Router>
       <div className="container">
         <Routes>
-          <Route path="/" element={<BotCollection />} />
+          <Route path="/" element={<BotsHome />} />
           <Route path="/your-bot-army" element={<BotArmy />} />
           <Route path="/bot/:id" element={<BotSpecs />} />
         </Routes>
