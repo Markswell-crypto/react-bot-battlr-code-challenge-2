@@ -9,7 +9,7 @@ function BotCollection() {
   const [selectedBots, setSelectedBots] = useState([]);
 
   useEffect(() => {
-    // Fetch data from your API (http://localhost:3000/bots)
+    // Fetch data from db.json
     fetch('http://localhost:3000/bots')
       .then((response) => response.json())
       .then((data) => setBots(data))
@@ -30,7 +30,7 @@ function BotCollection() {
 
   return (
     <div className="container">
-        
+
     <SelectedBots selectedBots={selectedBots} removeBot={removeBot} />
       <br />
       <h1 className="bg-primary text-white text-center">Bot Collection</h1>

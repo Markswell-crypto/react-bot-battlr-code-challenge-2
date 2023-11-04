@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/Navbar';
 import BotCollection from './components/BotCollection';
-import BotArmy from './components/BotArmy';
 import BotSpecs from './components/BotSpecs';
 import SelectedBots from './components/SelectedBots';
 

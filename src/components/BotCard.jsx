@@ -1,7 +1,7 @@
 // This component displays details of a single bot, including their name, class, health, damage, and armor. 
 // It also provides a button to view more details.
 import React from 'react';
-import { FaHeart, FaBolt, FaShieldAlt } from 'react-icons/fa'; // Import icons from the Font Awesome set
+import { FaHeart, FaBolt, FaShieldAlt } from 'react-icons/fa'; 
 import { Link } from 'react-router-dom';
 
 function BotCard({ bot, onSelectBot, selected }) {
@@ -32,5 +32,4 @@ function BotCard({ bot, onSelectBot, selected }) {
     </div>
   );
 }
-
 export default BotCard;
