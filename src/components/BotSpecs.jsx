@@ -42,8 +42,8 @@ function BotSpecs() {
           <p className="card-text text-muted">
             <FaRegClock /> Updated At: {bot.updated_at}
           </p>
-          <Link to={`/your-bot-army`} className="btn btn-primary">
-            Enlist in Your Bot Army
+          <Link to={`/`} className="btn btn-primary">
+            Go Back
           </Link>
         </div>
       </div>

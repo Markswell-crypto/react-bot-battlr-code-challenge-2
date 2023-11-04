@@ -16,6 +16,7 @@ function App() {
           <Route path="/" exact element={<BotCollection />} />
           <Route path="/your-bot-army" element={<SelectedBots />} />
           <Route path="/bot/:id" element={<BotSpecs/>} />
+          <Route path='/selected-bots' element={<SelectedBots />} />
         </Routes>
       </div>
     </Router>
