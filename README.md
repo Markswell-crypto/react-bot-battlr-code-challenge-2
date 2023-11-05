@@ -29,17 +29,17 @@ As a user, you can:
    ```bash
    git clone git@github.com:Markswell-crypto/react-bot-battlr-code-challenge-2.git
 Navigate to the project directory:
-
+    ```
     ```bash
 Install the required dependencies:
-
+    ```
     ```bash
 npm install
 Start Json development server:
-
+    ```
     ```bash
 npm run dev
-
+    ```
 Visit the application in your web browser at http://localhost:3000.
 Explore the "Bot Collection" to view profiles of bots.
 Click on a bot to view more details.
