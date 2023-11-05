@@ -26,6 +26,10 @@ function BotCollection() {
         setBots(updatedBots);
       })
       .catch((error) => console.error('Error deleting bot:', error));
+      
+    // Remove the bot from the selectedBots list if it was selected
+    const updatedSelectedBots = selectedBots.filter((selectedBot) => selectedBot.id !== botId);
+    setSelectedBots(updatedSelectedBots);
   };
   const onSelectBot = (bot) => {
     // Check if the bot is already selected
