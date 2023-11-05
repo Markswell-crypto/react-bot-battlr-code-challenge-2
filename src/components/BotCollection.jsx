@@ -15,7 +15,18 @@ function BotCollection() {
       .then((data) => setBots(data))
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
-
+  const onDeleteBot = (botId) => {
+    // Send a request to your server to delete the bot
+    fetch(`http://localhost:3000/bots/${botId}`, {
+      method: 'DELETE',
+    })
+      .then(() => {
+        // Update the state to remove the deleted bot
+        const updatedBots = bots.filter((bot) => bot.id !== botId);
+        setBots(updatedBots);
+      })
+      .catch((error) => console.error('Error deleting bot:', error));
+  };
   const onSelectBot = (bot) => {
     // Check if the bot is already selected
     if (!selectedBots.find((b) => b.id === bot.id)) {
@@ -41,6 +52,7 @@ function BotCollection() {
             bot={bot}
             onSelectBot={onSelectBot}
             selected={selectedBots.some((selectedBot) => selectedBot.id === bot.id)}
+            onDeleteBot={onDeleteBot}
           />
         ))}
       </div>

@@ -4,7 +4,7 @@ import React from 'react';
 import { FaHeart, FaBolt, FaShieldAlt } from 'react-icons/fa'; 
 import { Link } from 'react-router-dom';
 
-function BotCard({ bot, onSelectBot, selected }) {
+function BotCard({ bot, onSelectBot, selected, onDeleteBot }) {
   return (
     <div className={`col-md-2 mb-2 ${selected ? 'selected' : ''}`} onClick={() => onSelectBot(bot)}>
       <div className="card bg-light">
@@ -27,6 +27,9 @@ function BotCard({ bot, onSelectBot, selected }) {
           <Link to={`/bot/${bot.id}`} className="btn btn-primary">
             View Details
           </Link>
+          <button onClick={() => onDeleteBot(bot.id)} className="btn btn-danger">
+            X
+          </button>
         </div>
       </div>
     </div>
