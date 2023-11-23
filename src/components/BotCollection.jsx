@@ -9,16 +9,31 @@ function BotCollection() {
   const [selectedBots, setSelectedBots] = useState([]);
 
   useEffect(() => {
-    // Fetch data from db.json
-    fetch('http://localhost:3000/bots')
+    // Fetch data from api
+    fetch('https://api.jsonbin.io/v3/b/655f8f7b0574da7622cabfc6', {
+      method: "GET",
+      headers: {
+        'X-Master-Key': '$2a$10$95KRuFKagoLkdYMJKD2rEudGv1q0k9JhfFiVQBWgxngmdWLR5hDmy',
+      },
+    })
       .then((response) => response.json())
-      .then((data) => setBots(data))
+      .then((data) => {
+        console.log("Api Response:", data)
+        const botsArray = data.record.bots; 
+        console.log("Api Response:", botsArray) 
+      setBots(botsArray);
+        // setBots(data.bots)
+      })
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
+
   const onDeleteBot = (botId) => {
     // Send a request to your server to delete the bot
-    fetch(`http://localhost:3000/bots/${botId}`, {
+    fetch(`https://api.jsonbin.io/v3/b/655f8f7b0574da7622cabfc6'${botId}`, {
       method: 'DELETE',
+      headers: {
+        'X-Master-Key': '$2a$10$95KRuFKagoLkdYMJKD2rEudGv1q0k9JhfFiVQBWgxngmdWLR5hDmy',
+      },
     })
       .then(() => {
         // Update the state to remove the deleted bot
@@ -26,11 +41,12 @@ function BotCollection() {
         setBots(updatedBots);
       })
       .catch((error) => console.error('Error deleting bot:', error));
-      
+
     // Remove the bot from the selectedBots list if it was selected
     const updatedSelectedBots = selectedBots.filter((selectedBot) => selectedBot.id !== botId);
     setSelectedBots(updatedSelectedBots);
   };
+
   const onSelectBot = (bot) => {
     // Check if the bot is already selected
     if (!selectedBots.find((b) => b.id === bot.id)) {
@@ -45,12 +61,12 @@ function BotCollection() {
 
   return (
     <div className="container">
-
-    <SelectedBots selectedBots={selectedBots} removeBot={removeBot} />
+      <SelectedBots selectedBots={selectedBots} removeBot={removeBot} />
       <br />
       <h1 className="bg-primary text-white text-center">Bot Collection</h1>
       <div className="row">
-        {bots.map((bot) => (
+        {/* Conditional rendering check before using map */}
+        {bots && bots.map((bot) => (
           <BotCard
             key={bot.id}
             bot={bot}
